@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ФОП КУШТАН ВЛАДИСЛАВ СЕРГІЙОВИЧ — Інфраструктура та DevOps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #EDEFEA;
+    --bg-panel: #E3E6DE;
+    --ink: #1B2430;
+    --ink-soft: #4A5568;
+    --accent: #2F6F6A;
+    --accent-soft: #C7D6CE;
+    --line: #B9BFB3;
+    --tan: #8C7A5B;
+    --ok: #2F6F6A;
+    font-size: 16px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #14181A;
+      --bg-panel: #1B2124;
+      --ink: #E9ECE7;
+      --ink-soft: #A9B2AC;
+      --accent: #5FA69F;
+      --accent-soft: #24312F;
+      --line: #33393A;
+      --tan: #B39D74;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #14181A;
+    --bg-panel: #1B2124;
+    --ink: #E9ECE7;
+    --ink-soft: #A9B2AC;
+    --accent: #5FA69F;
+    --accent-soft: #24312F;
+    --line: #33393A;
+    --tan: #B39D74;
+  }
+
+  *{ box-sizing: border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Archivo', system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a{ color: inherit; }
+  .mono{ font-family: 'IBM Plex Mono', ui-monospace, monospace; }
+
+  .wrap{
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---- header / status strip ---- */
+  header{
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+  }
+  .status-strip{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .brand{
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+  }
+  .status-strip .meta{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    display:flex;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .dot{
+    display:inline-block;
+    width:7px; height:7px;
+    border-radius:50%;
+    background: var(--ok);
+    margin-right: 6px;
+    position: relative;
+    top: -1px;
+  }
+
+  /* ---- hero ---- */
+  .hero{
+    padding: 64px 0 48px;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero h1{
+    font-size: clamp(1.9rem, 4.2vw, 2.7rem);
+    line-height: 1.18;
+    font-weight: 700;
+    margin: 0 0 20px;
+    max-width: 15ch;
+    letter-spacing: -0.015em;
+  }
+  .hero p{
+    max-width: 56ch;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    margin: 0 0 28px;
+  }
+  .hero-tags{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tag{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.76rem;
+    padding: 5px 10px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    color: var(--ink-soft);
+  }
+
+  /* ---- services table ---- */
+  .section{
+    padding: 48px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .section-head{
+    display:flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+    gap: 16px;
+  }
+  .section-head h2{
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  .section-head .idx{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--tan);
+  }
+
+  .svc-row{
+    display: grid;
+    grid-template-columns: 1.3fr 2fr;
+    gap: 24px;
+    padding: 18px 0;
+    border-top: 1px solid var(--line);
+  }
+  .svc-row:last-child{ border-bottom: none; }
+  .svc-name{
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  .svc-desc{
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+  .svc-desc .mono{
+    color: var(--accent);
+    font-size: 0.82rem;
+  }
+
+  @media (max-width: 560px){
+    .svc-row{ grid-template-columns: 1fr; gap: 6px; }
+  }
+
+  /* ---- about ---- */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  @media (max-width: 560px){
+    .about-grid{ grid-template-columns: 1fr; }
+  }
+  .about-grid p{
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+    margin: 0 0 14px;
+  }
+  .fact{
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+    font-size: 0.9rem;
+  }
+  .fact:first-child{ border-top: none; }
+  .fact .label{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--tan);
+    display:block;
+    margin-bottom: 3px;
+  }
+
+  /* ---- contact ---- */
+  .contact{
+    padding: 56px 0 72px;
+  }
+  .contact h2{
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0 0 8px;
+    max-width: 20ch;
+  }
+  .contact p{
+    color: var(--ink-soft);
+    margin: 0 0 24px;
+  }
+  .contact-list{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .contact-list a{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 2px;
+    width: fit-content;
+    color: var(--accent);
+  }
+
+  footer{
+    border-top: 1px solid var(--line);
+    padding: 18px 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap status-strip">
+    <div class="brand">ФОП КУШТАН ВЛАДИСЛАВ СЕРГІЙОВИЧ</div>
+    <div class="meta">
+      <span><span class="dot"></span>доступний для проєктів</span>
+      <span>ЄДРПОУ/ІПН: 3388007931</span>
+      <span>Київ, UA</span>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>Інфраструктура та експлуатація систем для продакшн-середовищ</h1>
+    <p>Адміністрування Linux-серверів, PostgreSQL, мережева інфраструктура та пайплайни розгортання. Працюю самостійно, як підрядник з IT-компаніями та окремими проєктами.</p>
+    <div class="hero-tags">
+      <span class="tag">Linux administration</span>
+      <span class="tag">PostgreSQL DBA</span>
+      <span class="tag">Network infra</span>
+      <span class="tag">CI/CD &amp; deployment</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Послуги</h2>
+      <span class="idx mono">04 areas</span>
+    </div>
+
+    <div class="svc-row">
+      <div class="svc-name">Linux-сервери</div>
+      <div class="svc-desc">Налаштування, супровід і хардненінг production-серверів. <span class="mono">systemd · nginx · ssh hardening</span></div>
+    </div>
+    <div class="svc-row">
+      <div class="svc-name">PostgreSQL</div>
+      <div class="svc-desc">Тюнінг конфігурації, резервне копіювання, оптимізація запитів. <span class="mono">replication · backup · vacuum tuning</span></div>
+    </div>
+    <div class="svc-row">
+      <div class="svc-name">Мережа</div>
+      <div class="svc-desc">SSL/TLS, firewall-політики, VPN, SIP/VoIP-інфраструктура. <span class="mono">certbot · wireguard · sip trunking</span></div>
+    </div>
+    <div class="svc-row">
+      <div class="svc-name">Деплой</div>
+      <div class="svc-desc">Пайплайни розгортання, контейнеризація, моніторинг. <span class="mono">docker · ci/cd · uptime monitoring</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Про мене</h2>
+      <span class="idx mono">profile</span>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>Працюю як незалежний інженер з інфраструктури, підтримую продакшн-середовища для кількох клієнтів одночасно — від некомерційних вебпроєктів до медичних та логістичних систем.</p>
+        <p>Формат співпраці — підряд: погодинно або на проєктній основі, з повним циклом від налаштування сервера до супроводу.</p>
+      </div>
+      <div>
+        <div class="fact">
+          <span class="label">формат</span>
+          ФОП, 3 група ЄП
+        </div>
+        <div class="fact">
+          <span class="label">співпраця</span>
+          Підряд для IT-компаній та прямих клієнтів
+        </div>
+        <div class="fact">
+          <span class="label">мова</span>
+          Українська · English
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="wrap">
+    <h2>Обговорити проєкт</h2>
+    <p>Пишіть напряму — відповідаю протягом дня.</p>
+    <div class="contact-list">
+      <a href="mailto:vskushtan@gmail.com">vskushtan@gmail.com</a>
+      <a href="https://t.me/vskshtn">t.me/vskshtn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:8px;">
+    <span>ФОП КУШТАН ВЛАДИСЛАВ СЕРГІЙОВИЧ · 2026</span>
+    <span>yourdomain.dev</span>
+  </div>
+</footer>
+
+</body>
+</html>
